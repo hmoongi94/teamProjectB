@@ -1,5 +1,26 @@
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import pymysql
+
+# MariaDB 연결 정보
+HOST = 'localhost'
+USER = 'root'
+PASSWORD = 'mariadb'
+DATABASE = 'fastapi'
+
+# DB 연결 함수
+def get_db():
+    connection = pymysql.connect(
+        host=HOST,
+        user=USER,
+        password=PASSWORD,
+        database=DATABASE,
+        cursorclass=pymysql.cursors.DictCursor
+    )
+    try:
+        yield connection
+    finally:
+        connection.close()
 
 app = FastAPI()
 
@@ -13,11 +34,8 @@ app.add_middleware(
 )
 
 @app.get("/")
-def printHello():
-    return {"message": "Hello World"}
-
-@app.get("/json")
-def printJson():
-    return {
-        "Number": 12345
-    }
+async def get_database(db: pymysql.connections.Connection = Depends(get_db)):
+    with db.cursor() as cursor:
+        cursor.execute("SELECT * FROM test")
+        result = cursor.fetchall()
+    return {"databasedata" : result, "message":"hello world"}
