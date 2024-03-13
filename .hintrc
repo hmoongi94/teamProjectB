@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "typescript-config/is-valid": "off",
+    "no-inline-styles": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not samsung <= 21"
+  ]
+}
