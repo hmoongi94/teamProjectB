@@ -3,18 +3,15 @@
     "development"
   ],
   "hints": {
-    "typescript-config/is-valid": "off",
-    "no-inline-styles": "off",
-    "axe/forms": [
-      "default",
-      {
-        "label": "off"
-      }
-    ]
+    "typescript-config/is-valid": "off"
   },
   "browserslist": [
     "defaults",
     "not ie 11",
+    "not and_chr <= 116",
+    "not chrome <= 116",
+    "not edge <= 116",
+    "not opera <= 101",
     "not samsung <= 21"
   ]
 }
