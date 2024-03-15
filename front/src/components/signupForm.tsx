@@ -23,7 +23,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
       onSubmit(userId, password);
     } else {
       // 유효성 검사 실패 시 처리
-      console.log("아이디 또는 비밀번호를 입력해주세요.");
+      alert("아이디 또는 비밀번호를 입력해주세요.");
     }
   };
 
