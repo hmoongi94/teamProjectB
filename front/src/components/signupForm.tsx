@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 
@@ -33,6 +33,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
       <div>
         <label htmlFor="userId">아이디:</label>
         <input
+          className="text-black"
           type="text"
           id="userId"
           value={userId}
@@ -42,6 +43,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
       <div>
         <label htmlFor="password">비밀번호:</label>
         <input
+          className="text-black"
           type="password"
           id="password"
           value={password}
