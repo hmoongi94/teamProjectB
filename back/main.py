@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Body, Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import pymysql
 
@@ -42,7 +42,9 @@ async def get_database(db: pymysql.connections.Connection = Depends(get_db)):
 
 # 사용자 정보를 추가하는 엔드포인트
 @app.post("/signup")
-async def register_user(userId: str, password: str, db: pymysql.connections.Connection = Depends(get_db)):
+async def register_user(user_info: dict = Body(...), db: pymysql.connections.Connection = Depends(get_db)):
+    userId = user_info.get('userId')
+    password = user_info.get('password')
     with db.cursor() as cursor:
         try:
             # 사용자가 이미 존재하는지 확인
