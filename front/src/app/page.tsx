@@ -70,14 +70,16 @@ export default function Home() {
         </div>
       </div>
       {/* 페이지 라우팅 */}
-      <button type="button" onClick={() => router.push("/about")}>
-        About page
-      </button>
-      <Link href="about">About page</Link>
-      {/* 리디렉션 */}
-      <button type="button" onClick={handleRedirect}>
-        Go to Data Page
-      </button>
+      <div>
+        <button type="button" onClick={() => router.push("/about")}>
+          About page/
+        </button>
+        <Link href="about">About page/</Link>
+        {/* 리디렉션 */}
+        <button type="button" onClick={handleRedirect}>
+          Go to Data Page
+        </button>
+      </div>
     </main>
   );
 }
