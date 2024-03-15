@@ -6,12 +6,25 @@ interface SignupFormProps {
   onSubmit: (userId: string, password: string) => void;
 }
 
-function SignupForm({ onSubmit }: SignupFormProps) {
+const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
   const [userId, setUserId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const handleUserIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserId(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
   const handleSignup = () => {
-    onSubmit(userId, password);
+    if (userId.trim() !== "" && password.trim() !== "") {
+      onSubmit(userId, password);
+    } else {
+      // 유효성 검사 실패 시 처리
+      console.log("아이디 또는 비밀번호를 입력해주세요.");
+    }
   };
 
   return (
@@ -23,7 +36,7 @@ function SignupForm({ onSubmit }: SignupFormProps) {
           type="text"
           id="userId"
           value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          onChange={handleUserIdChange}
         />
       </div>
       <div>
@@ -32,12 +45,12 @@ function SignupForm({ onSubmit }: SignupFormProps) {
           type="password"
           id="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
         />
       </div>
       <button onClick={handleSignup}>회원가입</button>
     </div>
   );
-}
+};
 
 export default SignupForm;
