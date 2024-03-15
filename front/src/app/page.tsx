@@ -49,14 +49,14 @@ export default function Home() {
       <div>
         {message ? (
           <div>
-            <p>Message: {message}</p>
+            <p>fastapi로부터 메세지 받기: {message}</p>
           </div>
         ) : (
           <p>Loading...</p>
         )}
       </div>
       <div>
-        <h1>API Data:</h1>
+        <h1>API Data(connect DB data):</h1>
         <div>
           {data ? (
             <ul>
