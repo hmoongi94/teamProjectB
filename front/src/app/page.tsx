@@ -71,11 +71,13 @@ export default function Home() {
       </div>
       {/* 페이지 라우팅 */}
       <div>
-        <button type="button" onClick={() => router.push("/about")}>
-          About page/
+        <button type="button" onClick={() => router.push("/signup")}>
+          SignUp/
         </button>
-        <Link href="about">About page/</Link>
+        <Link href="login">Login page</Link>
         {/* 리디렉션 */}
+      </div>
+      <div>
         <button type="button" onClick={handleRedirect}>
           Go to Data Page
         </button>
