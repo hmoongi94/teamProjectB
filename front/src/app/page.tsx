@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface DataItem {
   data: string;
@@ -32,7 +33,16 @@ export default function Home() {
     }
   };
 
-  const router = useRouter()
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    if (data === null) {
+      router.push("/about");
+    } else {
+      router.push("/data");
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {/* fastapi에서 데이터받기 */}
@@ -62,6 +72,11 @@ export default function Home() {
       {/* 페이지 라우팅 */}
       <button type="button" onClick={() => router.push("/about")}>
         About page
+      </button>
+      <Link href="about">About page</Link>
+      {/* 리디렉션 */}
+      <button type="button" onClick={handleRedirect}>
+        Go to Data Page
       </button>
     </main>
   );
